@@ -12,7 +12,7 @@ public class AplicaFiltro {
 		 
         try {
             //carrega nova imagem
-            BufferedImage imagem1 = ImageIO.read(new File("img/img2.jpg"));
+            BufferedImage imagem1 = ImageIO.read(new File("imgem/img2.jpg"));
             //instancia um filtro e aplica a escala de cinza
             Filtro filtro = new Filtro();
             filtro.escalaDeCinza(imagem1);

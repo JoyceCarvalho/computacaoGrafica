@@ -19,6 +19,7 @@ public class Exibicao {
         contentPane.setLayout(new GridLayout());
         contentPane.add(new JScrollPane(imageLabel));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.setSize(800, 600);
         frame.setVisible(true);
     }
