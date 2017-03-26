@@ -12,17 +12,17 @@ public class AplicaFiltro {
 		 
         try {
             //carrega nova imagem
-            BufferedImage imagem1 = ImageIO.read(new File("imgem/img2.jpg"));
+            BufferedImage imagem1 = ImageIO.read(new File("img/gato.jpg"));
             //instancia um filtro e aplica a escala de cinza
             Filtro filtro = new Filtro();
-            filtro.escalaDeCinza(imagem1);
+            filtro.threshold(imagem1,150);
             //gera uma nova imagem a partir da imagem1
-            ImageIO.write(imagem1,"jpg",new File("img/imagem2.jpg"));
+            ImageIO.write(imagem1,"jpg",new File("img/imagem.jpg"));
  
             //aqui apenas para demonstração,
             //carreguei novamente as duas imagens para exibi-las dentro de um JFrame
-            imagem1 = ImageIO.read(new File("img/img2.jpg"));
-            BufferedImage imagem2 = ImageIO.read(new File("img/imagem2.jpg"));
+            imagem1 = ImageIO.read(new File("img/gato.jpg"));
+            BufferedImage imagem2 = ImageIO.read(new File("img/imagem.jpg"));
             Exibicao show = new Exibicao();
             show.exibirImagem(imagem1, imagem2);
             System.out.println("Filtro aplicado com sucesso!");

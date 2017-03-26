@@ -15,7 +15,8 @@ public class Filtro {
         int media = 0;
         //laço para varrer a matriz de pixels da imagem
         for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {               //rgb recebe o valor RGB do pixel em questão                
+            for (int j = 0; j < height; j++) {               
+            	//rgb recebe o valor RGB do pixel em questão                
             	int rgb = imagem.getRGB(i, j);              
             	int r = (int)((rgb&0x00FF0000)>>>16); //R
                 int g = (int)((rgb&0x0000FF00)>>>8);  //G
@@ -39,7 +40,8 @@ public class Filtro {
         int height = image.getHeight();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {               
-            	int rgb = image.getRGB(i, j);               //a cor inversa é dado por 255 menos o valor da cor                 
+            	int rgb = image.getRGB(i, j);               
+            	//a cor inversa é dado por 255 menos o valor da cor                 
             	int r = 255 - (int)((rgb&0x00FF0000)>>>16);
             	int g = 255 - (int)((rgb&0x0000FF00)>>>8);
                 int b = 255 - (int) (rgb&0x000000FF);
