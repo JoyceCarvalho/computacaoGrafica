@@ -52,7 +52,7 @@ public class Filtro {
         return image;
     }
  
-    public static BufferedImage threshold(BufferedImage image, int limiar) {
+    public static BufferedImage lamiar(BufferedImage image, int limiar) {
         int width = image.getWidth();
         int height = image.getHeight();
         for (int i = 0; i < width; i++) {
