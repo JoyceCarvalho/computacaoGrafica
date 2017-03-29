@@ -78,37 +78,6 @@ public class Filtro {
         return image;
     }
     
-    public static BufferedImage filtroOne(BufferedImage imagem){
-    	
-    	//pegar largura e altura da imagem
-        int width = imagem.getWidth();
-        int height = imagem.getHeight();
- 
-        int media = 0;
-        //laço para varrer a matriz de pixels da imagem
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {               
-            	//rgb recebe o valor RGB do pixel em questão                
-            	int rgb = imagem.getRGB(i, j);              
-            	int r = (int)((rgb&0x00FF0000)>>>16); //R
-                int g = (int)((rgb&0x0000FF00)>>>8);  //G
-                int b = (int) (rgb&0x000000FF);       //B
- 
-                int test = (int)(rgb&0X00000000);
-                //media dos valores do RGB
-                //será o valor do pixel na nova imagem
-                media = (r + g + b) / 3;                
-                
-                
-                //criar uma instância de Color
-                Color color = new Color(test, media, test);
-                //setar o valor do pixel com a nova cor
-                imagem.setRGB(i, j, color.getRGB());
-            }
-        }
-    	return imagem;
-    }
-    
     public static BufferedImage filtroTwo(BufferedImage imagem, int limiar){
     	int width = imagem.getWidth();
         int height = imagem.getHeight();
