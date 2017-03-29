@@ -52,7 +52,7 @@ public class Filtro {
         return image;
     }
  
-    public static BufferedImage lamiar(BufferedImage image, int limiar) {
+    public static BufferedImage limiar(BufferedImage image, int limiar) {
         int width = image.getWidth();
         int height = image.getHeight();
         for (int i = 0; i < width; i++) {
@@ -64,7 +64,7 @@ public class Filtro {
                 int media = (r + g + b) / 3;
                 Color white = new Color(255, 255, 255);
                 Color black = new Color(0, 0, 0);
-                //como explicado no artigo, no threshold definimos um limiar,
+                //definimos um limiar,
                 //que é um valor "divisor de águas"
                 //pixels com valor ABAIXO do limiar viram pixels PRETOS,
                 //pixels com valor ACIMA do limiar viram pixels BRANCOS
@@ -74,6 +74,71 @@ public class Filtro {
                     image.setRGB(i, j, white.getRGB());
             }
         }
+        
         return image;
     }
+    
+    public static BufferedImage filtroOne(BufferedImage imagem){
+    	
+    	//pegar largura e altura da imagem
+        int width = imagem.getWidth();
+        int height = imagem.getHeight();
+ 
+        int media = 0;
+        //laço para varrer a matriz de pixels da imagem
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {               
+            	//rgb recebe o valor RGB do pixel em questão                
+            	int rgb = imagem.getRGB(i, j);              
+            	int r = (int)((rgb&0x00FF0000)>>>16); //R
+                int g = (int)((rgb&0x0000FF00)>>>8);  //G
+                int b = (int) (rgb&0x000000FF);       //B
+ 
+                int test = (int)(rgb&0X00000000);
+                //media dos valores do RGB
+                //será o valor do pixel na nova imagem
+                media = (r + g + b) / 3;                
+                
+                
+                //criar uma instância de Color
+                Color color = new Color(test, media, test);
+                //setar o valor do pixel com a nova cor
+                imagem.setRGB(i, j, color.getRGB());
+            }
+        }
+    	return imagem;
+    }
+    
+    public static BufferedImage filtroTwo(BufferedImage imagem, int limiar){
+    	int width = imagem.getWidth();
+        int height = imagem.getHeight();
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {               
+            	int rgb = imagem.getRGB(i, j);               
+            	int r = (int)((rgb&0x00FF0000)>>>16);
+                int g = (int)((rgb&0x0000FF00)>>>8);
+                int b = (int) (rgb&0x000000FF);
+                int media = (r + g + b) / 3;
+                Color white = new Color(255, 255, 255);
+                Color black = new Color(0, 0, 0);
+                Color gray = new Color(media, media, media);
+                Color red = new Color(255,0,0);
+                //definimos um limiar,
+                //que é um valor "divisor de águas"
+                //pixels com valor ABAIXO do limiar viram pixels PRETOS,
+                //pixels com valor ACIMA do limiar viram pixels BRANCOS
+                if (media < limiar){
+                    //imagem.setRGB(i, j, black.getRGB());
+                    imagem.setRGB(i, j, black.getRGB());
+                }else if((media >= limiar) && (media <= limiar+85)){
+                    imagem.setRGB(i, j, white.getRGB());
+                }else{
+                	imagem.setRGB(i, j, gray.getRGB());
+                }
+            }
+        }
+        
+        return imagem;
+    }
+    
 }

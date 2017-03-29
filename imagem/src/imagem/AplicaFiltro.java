@@ -15,7 +15,7 @@ public class AplicaFiltro {
             BufferedImage imagem1 = ImageIO.read(new File("img/gato.jpg"));
             //instancia um filtro e aplica a escala de cinza
             Filtro filtro = new Filtro();
-            filtro.lamiar(imagem1,150);
+            filtro.filtroTwo(imagem1, 85);
             //gera uma nova imagem a partir da imagem1
             ImageIO.write(imagem1,"jpg",new File("img/imagem.jpg"));
  
